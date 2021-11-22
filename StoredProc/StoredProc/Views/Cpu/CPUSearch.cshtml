@@ -1,0 +1,69 @@
+﻿<body style="padding-top: 10px">
+    <div class="col-xs-8 col-xs-offset-2">
+        <div class="panel-heading">
+            <h3>Cars Search Form</h3>
+        </div>
+        <form asp-controller="Cars" asp-action="CarsSearch">
+            <div>
+                <label for="Name">Name</label>
+                <br />
+                <input type="text" name="Name" placeholder="Name" />
+            </div>
+            <br />
+            <div>
+                <label for="Company">Company</label>
+                <br />
+                <input type="text" name="Company" placeholder="Company" />
+            </div>
+            <br />
+            <div>
+                <label for="BaseClock">BaseClock</label>
+                <br />
+                <input type="number" name="BaseClock" placeholder="BaseClock" />
+            </div>
+            <br />
+            <div>
+                <label for="MaxBoostClock">Max Boost Clock</label>
+                <br />
+                <input type="number" name="MaxboostClock" placeholder="MaxBoostClock" />
+            </div>
+            <div>
+                <label for="CoreCount">Core Count</label>
+                <br />
+                <input type="number" name="Core Count" placeholder="CoreCount" />
+            </div>
+            <div>
+                <label for="ThreadCount">Thread Count</label>
+                <br />
+                <input type="number" name="Thread Count" placeholder="ThreadCount" />
+            </div>
+
+            
+            <br />
+            <input type="submit" value="Search/Reset Filter" />
+        </form>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Company</th>
+                    <th scope="col">Base Clock</th>
+                    <th scope="col">Max Boost Clock</th>
+                    <th scope="col">Core Count</th>
+                    <th scope="col">Thread Count</th>
+                </tr>
+            <tbody>
+             @foreach(var Cpu in Model)
+                {
+    <tr>
+        <td> @Cpu.Name </td>
+        <td> @Cpu.Company </td>
+        <td> @Cpu.BaseClock </td>
+        <td> @Cpu.MaxBoostClock </td>
+        <td> @Cpu.CoreCount</td>
+        <td> @Cpu.ThreadCount</td>
+    </tr>}
+            </tbody>
+        </table>
+    </div>
+</body>

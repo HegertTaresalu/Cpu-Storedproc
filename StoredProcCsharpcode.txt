@@ -1,0 +1,61 @@
+create database StoredProc
+go
+use StoredProc
+go
+
+create table Cars
+(
+Id int primary key identity,
+Name nvarchar(50),
+Brand nvarchar(50),
+Wheelcount int,
+HorsePower int
+)
+go
+
+insert into cars values ('Land Rover Discovery', 'Land Rover', 4, 300)
+insert into cars values ('Mercedes G-class', 'Mercedes-Benz', 4, 400)
+insert into cars values ('Range Rover', 'Land Rover', 4, 100)
+insert into cars values ('Fiat Panda Cross', 'Fiat', 4, 250)
+insert into cars values ('Mansory Gronos G63 6x6', 'Mansory', 6, 800)
+insert into cars values ('Covini C6W', 'Covini Engineering', 6, 500)
+insert into cars values ('Toyota Land Cruiser', 'Toyota', 4, 300)
+insert into cars values ('Suzuki Jimny', 'Suzuki', 4, 200)
+insert into cars values ('Subaru XV', 'Subaru', 4, 400)
+insert into cars values ('Range Rover VELAR', 'Land Rover', 4, 500)
+insert into cars values ('DEFENDER', 'Land Rover', 4, 450)
+insert into cars values ('Suzuki Carry', 'Suzuki', 6, 760)
+insert into cars values ('Jeep Wrangler', 'Jeep', 6, 500)
+insert into cars values ('86', 'Toyota', 4, 400)
+go
+
+
+create proc spSearchCars
+@Name nvarchar(50),
+@Brand nvarchar(50),
+@Wheelcount int,
+@HorsePower int
+as
+begin
+Select * from Cars where
+(Name = @Name or @Name IS NULL) and
+(Brand = @Brand or @Brand IS NULL) and
+(Wheelcount = @Wheelcount or @Wheelcount IS NULL) and
+(HorsePower = @HorsePower or @HorsePower IS NULL)
+end
+go
+
+alter proc spSearchCars
+@Name nvarchar(100) = NULL,
+@Brand nvarchar(100) = NULL,
+@Wheelcount nvarchar(50) = NULL,
+@HorsePower int = NULL
+as
+begin
+select * from Cars where
+(Name = @Name or @Name IS NULL) and
+(Brand = @Brand or @Brand IS NULL) and
+(Wheelcount = @Wheelcount or @Wheelcount IS NULL) and
+(HorsePower = @HorsePower or @HorsePower IS NULL)
+end
+go
