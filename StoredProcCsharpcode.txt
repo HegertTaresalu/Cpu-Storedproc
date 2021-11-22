@@ -1,50 +1,59 @@
 create database StoredProc
 go
-use StoredProc
-go
 
-create table Cars
+Use StoredProc
+
+create table Cpu
 (
 Id int primary key identity,
 Name nvarchar(50),
-Brand nvarchar(50),
-Wheelcount int,
-HorsePower int
+Company nvarchar(50),
+BaseClock float,
+MaxClockSpeed float,
+CoreCount int,
+ThreadCount int
 )
 go
 
-insert into cars values ('Land Rover Discovery', 'Land Rover', 4, 300)
-insert into cars values ('Mercedes G-class', 'Mercedes-Benz', 4, 400)
-insert into cars values ('Range Rover', 'Land Rover', 4, 100)
-insert into cars values ('Fiat Panda Cross', 'Fiat', 4, 250)
-insert into cars values ('Mansory Gronos G63 6x6', 'Mansory', 6, 800)
-insert into cars values ('Covini C6W', 'Covini Engineering', 6, 500)
-insert into cars values ('Toyota Land Cruiser', 'Toyota', 4, 300)
-insert into cars values ('Suzuki Jimny', 'Suzuki', 4, 200)
-insert into cars values ('Subaru XV', 'Subaru', 4, 400)
-insert into cars values ('Range Rover VELAR', 'Land Rover', 4, 500)
-insert into cars values ('DEFENDER', 'Land Rover', 4, 450)
-insert into cars values ('Suzuki Carry', 'Suzuki', 6, 760)
-insert into cars values ('Jeep Wrangler', 'Jeep', 6, 500)
-insert into cars values ('86', 'Toyota', 4, 400)
+insert into Cpu values('Intel','Core i9-12900KF',3.20,5.20,16,24)
+insert into Cpu values('Amd','Ryzen 5 3600',3.6,4.2,6,12)
+insert into Cpu values('Amd','Ryzen 5 5600g',3.9,4.4,6,12)
+insert into Cpu values('Intel','Core i7-7700k',4.2,4.5,4,8)
+insert into Cpu values('Intel','Core i7-8700k',3.7,4.7,6,12)
+insert into Cpu values('Amd','Ryzen 5900X',3.7, 4.8,12,24)
+insert into Cpu values('Amd','Ryzen 5950X',3.4, 4.9,16,32)
+insert into Cpu values('Amd','Ryzen 5600X',3.7, 4.6,6,12)
+go
+
+create proc spSearchCars
+@Name nvarchar(50),
+@Company nvarchar(50),
+@Baseclock float,
+@MaxClockSpeed float,
+@CoreCount int,
+@ThreadCount int
+as
+begin
+Select * from Cpu where
+(Name = @Name or @Name IS NULL) and
+(Company = @Company or @Company IS NULL) and
+(BaseClock = @Baseclock or @Baseclock IS NULL) and
+(MaxClockSpeed= @MaxClockSpeed or @MaxClockSpeed IS NULL) and
+(CoreCount = @CoreCount or @CoreCount IS NULL) and
+(ThreadCount = @ThreadCount or @ThreadCount IS NULL)
+end
 go
 
 
 create proc spSearchCars
 @Name nvarchar(50),
-@Brand nvarchar(50),
-@Wheelcount int,
-@HorsePower int
+@Company nvarchar(50),
+@Baseclock float,
+@MaxClockSpeed float,
+@CoreCount int,
+@ThreadCount int
 as
 begin
-Select * from Cars where
-(Name = @Name or @Name IS NULL) and
-(Brand = @Brand or @Brand IS NULL) and
-(Wheelcount = @Wheelcount or @Wheelcount IS NULL) and
-(HorsePower = @HorsePower or @HorsePower IS NULL)
-end
-go
-
 alter proc spSearchCars
 @Name nvarchar(100) = NULL,
 @Brand nvarchar(100) = NULL,
