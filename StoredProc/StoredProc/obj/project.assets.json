@@ -5334,23 +5334,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Mumminaator\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\opilane\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mumminaator\\Desktop\\StoredProc-master\\StoredProc\\StoredProc\\StoredProc.csproj",
+      "projectUniqueName": "C:\\Users\\opilane\\Desktop\\Cpu-Storedproc\\StoredProc\\StoredProc\\StoredProc.csproj",
       "projectName": "StoredProc",
-      "projectPath": "C:\\Users\\Mumminaator\\Desktop\\StoredProc-master\\StoredProc\\StoredProc\\StoredProc.csproj",
-      "packagesPath": "C:\\Users\\Mumminaator\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mumminaator\\Desktop\\StoredProc-master\\StoredProc\\StoredProc\\obj\\",
+      "projectPath": "C:\\Users\\opilane\\Desktop\\Cpu-Storedproc\\StoredProc\\StoredProc\\StoredProc.csproj",
+      "packagesPath": "C:\\Users\\opilane\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\opilane\\Desktop\\Cpu-Storedproc\\StoredProc\\StoredProc\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Mumminaator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\opilane\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -5418,7 +5423,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

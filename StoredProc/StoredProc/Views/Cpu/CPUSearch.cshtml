@@ -1,9 +1,9 @@
 ﻿<body style="padding-top: 10px">
     <div class="col-xs-8 col-xs-offset-2">
         <div class="panel-heading">
-            <h3>Cars Search Form</h3>
+            <h3>CPU Search Form</h3>
         </div>
-        <form asp-controller="Cars" asp-action="CarsSearch">
+        <form asp-controller="Cpu" asp-action="CpuSearch">
             <div>
                 <label for="Name">Name</label>
                 <br />
@@ -53,13 +53,14 @@
                     <th scope="col">Thread Count</th>
                 </tr>
             <tbody>
+
              @foreach(var Cpu in Model)
                 {
     <tr>
         <td> @Cpu.Name </td>
         <td> @Cpu.Company </td>
         <td> @Cpu.BaseClock </td>
-        <td> @Cpu.MaxBoostClock </td>
+        <td> @Cpu.MaxClockSpeed </td>
         <td> @Cpu.CoreCount</td>
         <td> @Cpu.ThreadCount</td>
     </tr>}

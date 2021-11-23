@@ -51,8 +51,8 @@ namespace StoredProc.Controllers
                     var details = new Cpu();
                     details.Name = sdr["Name"].ToString();
                     details.Company = sdr["Company"].ToString();
-                    details.BaseClock = Convert.ToInt32(sdr["BaseClock"]);
-                    details.MaxBoostClock = Convert.ToInt32(sdr["MaxBoostClock"]);
+                    details.BaseClock = (double?)Convert.ToDecimal(sdr["BaseClock"]);
+                    details.MaxClockSpeed = (double?)Convert.ToDecimal(sdr["MaxClockSpeed"]);
                     details.CoreCount = Convert.ToInt32(sdr["CoreCount"]);
                     details.ThreadCount = Convert.ToInt32(sdr["ThreadCount"]);
                     model.Add(details);
@@ -63,7 +63,7 @@ namespace StoredProc.Controllers
 
 
         [HttpPost]
-        public IActionResult CarsSearch(string Name, string Company, int BaseClock, int MaxBoostClock, int CoreCount, int ThreadCount)
+        public IActionResult CpuSearch(string Name, string Company, int BaseClock, decimal? MaxClockSpeed, int? CoreCount, int? ThreadCount)
         {
             string connectionStr = _config.GetConnectionString("DefaultConnection");
 
@@ -88,20 +88,20 @@ namespace StoredProc.Controllers
                     SqlParameter param_g = new SqlParameter("@BaseClock", BaseClock);
                     cmd.Parameters.Add(param_g);
                 }
-                if (MaxBoostClock != null)
+                if (MaxClockSpeed != null)
                 {
-                    SqlParameter param_s = new SqlParameter("@MaxBoostClock", MaxBoostClock);
+                    SqlParameter param_s = new SqlParameter("@MaxClockSpeed", MaxClockSpeed);
                     cmd.Parameters.Add(param_s);
                 }
                 if (CoreCount != null)
                 {
-                    SqlParameter param_s = new SqlParameter("CoreCount", CoreCount);
+                    SqlParameter param_s = new SqlParameter("@CoreCount", CoreCount);
                     cmd.Parameters.Add(param_s);
                          
                 }
                 if(ThreadCount != null)
                 {
-                    SqlParameter param_s = new SqlParameter("ThreadCount", ThreadCount);
+                    SqlParameter param_s = new SqlParameter("@ThreadCount", ThreadCount);
                     cmd.Parameters.Add(param_s);
                 }
 
@@ -113,8 +113,8 @@ namespace StoredProc.Controllers
                     var details = new Cpu();
                     details.Name = sdr["Name"].ToString();
                     details.Company = sdr["Company"].ToString();
-                    details.BaseClock = Convert.ToDouble(sdr["BaseClock"]);
-                    details.MaxBoostClock = Convert.ToDouble(sdr["MaxBoostClock"]);
+                    details.BaseClock = (double?)Convert.ToDecimal(sdr["BaseClock"]);
+                    details.MaxClockSpeed = (double?)Convert.ToDecimal(sdr["MaxClockSpeed"]);
                     details.CoreCount = Convert.ToInt32(sdr["CoreCount"]);
                     details.ThreadCount = Convert.ToInt32(sdr["ThreadCount"]);
                     model.Add(details);

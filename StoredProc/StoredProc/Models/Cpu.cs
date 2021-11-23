@@ -12,7 +12,7 @@ namespace StoredProc.Models
         public string Name { get; set; }
         public string Company { get; set; }
         public double? BaseClock { get; set; }
-        public double? MaxBoostClock { get; set; }
+        public double? MaxClockSpeed { get; set; }
 
         public int? CoreCount { get; set; }
 

@@ -1,3 +1,4 @@
+
 create database StoredProc
 go
 
@@ -23,9 +24,12 @@ insert into Cpu values('Intel','Core i7-8700k',3.7,4.7,6,12)
 insert into Cpu values('Amd','Ryzen 5900X',3.7, 4.8,12,24)
 insert into Cpu values('Amd','Ryzen 5950X',3.4, 4.9,16,32)
 insert into Cpu values('Amd','Ryzen 5600X',3.7, 4.6,6,12)
+insert into Cpu values('Intel','Core i9-9980XE',3,4.5,18,36)
+insert into Cpu values('Intel', 'Core i5-6400',3,3.4,4,8)
+
 go
 
-create proc spSearchCars
+create proc spSearchCpu
 @Name nvarchar(50),
 @Company nvarchar(50),
 @Baseclock float,
@@ -43,28 +47,21 @@ Select * from Cpu where
 (ThreadCount = @ThreadCount or @ThreadCount IS NULL)
 end
 go
-
-
-create proc spSearchCars
-@Name nvarchar(50),
-@Company nvarchar(50),
-@Baseclock float,
-@MaxClockSpeed float,
-@CoreCount int,
-@ThreadCount int
-as
-begin
-alter proc spSearchCars
+alter proc spSearchCpu
 @Name nvarchar(100) = NULL,
-@Brand nvarchar(100) = NULL,
-@Wheelcount nvarchar(50) = NULL,
-@HorsePower int = NULL
+@Company nvarchar(100) = NULL,
+@baseClock float = NULL,
+@MaxClockSpeed float = NULL,
+@CoreCount int = NULL,
+@ThreadCount int = NULL
 as
 begin
-select * from Cars where
+select * from Cpu where
 (Name = @Name or @Name IS NULL) and
-(Brand = @Brand or @Brand IS NULL) and
-(Wheelcount = @Wheelcount or @Wheelcount IS NULL) and
-(HorsePower = @HorsePower or @HorsePower IS NULL)
+(Company = @Company or @Company IS NULL) and
+(BaseClock = @Baseclock or @Baseclock IS NULL) and
+(MaxClockSpeed= @MaxClockSpeed or @MaxClockSpeed IS NULL) and
+(CoreCount = @CoreCount or @CoreCount IS NULL) and
+(ThreadCount = @ThreadCount or @ThreadCount IS NULL)
 end
 go
